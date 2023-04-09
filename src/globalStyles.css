@@ -13,12 +13,40 @@
   --title-2: 600 1rem "Inter", sans-serif;
   --title-3: 700 .875rem "Inter", sans-serif;
   --headline: 400 .7588rem "Inter", sans-serif;
-  --headlineBold: bold 600 .7588rem "Inter", sans-serif;
+  --headlineBold: 600 .7588rem "Inter", sans-serif;
   --headlineItalic: italic 400 .7588rem "Inter", sans-serif;
+  --toastify-color-success: #3FE864;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #E83F5B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   width: 100%;
   height: 100%;
   font-family: "Inter", sans-serif;
+  background-color: #121214;
 }
+
+li {
+  list-style: none;
+}
+
+button {
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+}
+a {
+  text-decoration: none;
+}
+a {
+  color: inherit;
+}
+
