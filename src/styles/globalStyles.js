@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
@@ -12,12 +12,12 @@ export const GlobalStyle = createGlobalStyle`
   --gray-4: #121214;
   --sucess: #3FE864;
   --fail: #E83F5B;
-  --title-1: 700 1.125rem "Inter", sans-serif;
-  --title-2: 600 1rem "Inter", sans-serif;
-  --title-3: 700 .875rem "Inter", sans-serif;
-  --headline: 400 .7588rem "Inter", sans-serif;
-  --headlineBold: 600 .7588rem "Inter", sans-serif;
-  --headlineItalic: italic 400 .7588rem "Inter", sans-serif;
+  --title-1: 700 1.125rem inherit;
+  --title-2: 600 1rem inherit;
+  --title-3: 700 .875rem inherit;
+  --headline: 400 .7588rem inherit;
+  --headlineBold: 600 .7588rem inherit;
+  --headlineItalic: italic 400 .7588rem inherit;
   --toastify-color-success: #3FE864;
   --toastify-color-warning: #f1c40f;
   --toastify-color-error: #E83F5B;
@@ -52,6 +52,4 @@ a {
 a {
   color: inherit;
 }
-
-
-`
+`;

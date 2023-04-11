@@ -15,14 +15,14 @@ export const StyledRegisterContainer = styled.div`
   h2 {
     font: var(--title-1);
   }
-  small {
+  >small {
     font: var(--headline);
     color: var(--gray-1);
   }
   form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     width: 100%;
     font: var(--headline);
     button {

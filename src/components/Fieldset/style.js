@@ -55,6 +55,7 @@ export const StyledFieldset = styled.fieldset`
     }
   }
   >small {
+    height: 12px;
     position: absolute;
     bottom: 0;
     left: 0;

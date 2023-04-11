@@ -13,7 +13,13 @@ export const StyledLoginPage = styled.div`
     h1 {
         color: var(--color-primary);
     }
+    form {
+        gap: 1.5rem;
+    }
     @media (min-width: 768px) {
         width: 23.0625rem;
+        form {
+            gap: 1rem;
+        }
     }
 `

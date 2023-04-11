@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { LoginPage } from './pages/LoginPage';
 import { NotFound } from './pages/NotFound';
 import { Home } from './pages/Home';
-import { RegisterPage } from './pages/Register';
+import { RegisterPage } from './pages/RegisterPage';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './styles/globalStyles';
 

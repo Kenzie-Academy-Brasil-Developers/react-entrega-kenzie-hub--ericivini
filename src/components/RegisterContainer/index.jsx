@@ -33,7 +33,8 @@ export const RegisterContainer = () => {
         } catch (error) {
             toast.error("Ops, Algo deu errado", {
                 theme: "dark"
-            })
+            });
+            return error.response.data
         }
     }, [loading])
 
