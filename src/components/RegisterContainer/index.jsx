@@ -17,24 +17,24 @@ export const RegisterContainer = () => {
     const navigateTo = useNavigate();
 
     useEffect(() => {
-        try {
-            async function registerUser(formData) {
+        async function registerUser(formData) {
+            try {
                 const response = await api.post("/users", formData)
-                    .then(res => setNewUser(res.data));
+                // .then(res => setNewUser(res.data));
                 toast.success("Usuário criado com sucesso", {
                     theme: "dark"
                 });
                 setTimeout(() => navigateTo("/"), 5000)
                 return response
+            } catch (error) {
+                toast.error(error.response.data.message, {
+                    theme: "dark"
+                });
+                return error.response
             }
-            if (loading) {
-                registerUser(newUser)
-            }
-        } catch (error) {
-            toast.error("Ops, Algo deu errado", {
-                theme: "dark"
-            });
-            return error.response.data
+        }
+        if (loading) {
+            registerUser(newUser)
         }
     }, [loading])
 
