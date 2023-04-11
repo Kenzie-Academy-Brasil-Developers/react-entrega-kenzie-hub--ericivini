@@ -20,7 +20,7 @@ export const RegisterContainer = () => {
         async function registerUser(formData) {
             try {
                 const response = await api.post("/users", formData)
-                // .then(res => setNewUser(res.data));
+                .then(res => setNewUser(res.data));
                 toast.success("Usuário criado com sucesso", {
                     theme: "dark"
                 });
