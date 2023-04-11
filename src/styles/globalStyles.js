@@ -1,3 +1,6 @@
+import {createGlobalStyle} from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
 :root {
   --color-primary: #FF577F;
   --color-primary-focus: #FF427F;
@@ -50,3 +53,5 @@ a {
   color: inherit;
 }
 
+
+`

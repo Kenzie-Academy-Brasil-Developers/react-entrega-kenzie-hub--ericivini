@@ -6,6 +6,7 @@ import { NotFound } from './pages/NotFound';
 import { Home } from './pages/Home';
 import { RegisterPage } from './pages/Register';
 import 'react-toastify/dist/ReactToastify.css';
+import { GlobalStyle } from './styles/globalStyles';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <GlobalStyle />
       <Routes>
         <Route path='/' element={<LoginPage />} />
         <Route path='/Register' element={<RegisterPage />} />
