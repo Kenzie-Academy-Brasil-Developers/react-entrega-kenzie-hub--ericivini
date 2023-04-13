@@ -9,7 +9,7 @@ export const StyledFieldset = styled.fieldset`
   padding-bottom: 1rem;
   flex-direction: column;
   gap: 1rem;
-  input {
+  >input {
     font: 400 1rem "Inter";
     background: #343b41;
     border: 1.2182px solid #343b41;
@@ -35,7 +35,7 @@ export const StyledFieldset = styled.fieldset`
     bottom: 1.875rem;
     color: var(--gray-0);
   }
-  select {
+  >select {
     font: 400 1rem "Inter";
     background: #343b41;
     border: 1.2182px solid #343b41;

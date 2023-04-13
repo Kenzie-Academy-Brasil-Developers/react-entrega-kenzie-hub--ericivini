@@ -10,7 +10,7 @@ import { Select } from "../../fragments/Select";
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
-import { UserContext } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const RegisterContainer = () => {
     const { newUser, setNewUser, loading, setLoading } = useContext(UserContext)
@@ -128,7 +128,12 @@ export const RegisterContainer = () => {
                     label={"Selecione o módulo"}
                     name={"course_module"}
                     input={
-                        <Select id={"course_module"} register={register("course_module")} />
+                        <Select id={"course_module"} register={register("course_module")} >
+                            <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro módulo</option>
+                            <option value="Segundo módulo (Frontend Avançado)">Segundo módulo</option>
+                            <option value="Terceiro módulo (Introdução ao Backend)">Terceiro módulo</option>
+                            <option value="Quarto módulo (Backend Avançado)">Quarto módulo</option>
+                        </Select>
                     }
                     error={errors.course_module}
                 />

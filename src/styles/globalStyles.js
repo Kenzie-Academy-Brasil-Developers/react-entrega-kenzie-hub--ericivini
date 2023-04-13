@@ -12,12 +12,12 @@ export const GlobalStyle = createGlobalStyle`
   --gray-4: #121214;
   --sucess: #3FE864;
   --fail: #E83F5B;
-  --title-1: 700 1.125rem inherit;
-  --title-2: 600 1rem inherit;
-  --title-3: 700 .875rem inherit;
-  --headline: 400 .7588rem inherit;
-  --headlineBold: 600 .7588rem inherit;
-  --headlineItalic: italic 400 .7588rem inherit;
+  --title-1: 700 1.125rem "Inter";
+  --title-2: 600 1rem "Inter";
+  --title-3: 700 .875rem "Inter";
+  --headline: 400 .7588rem "Inter";
+  --headlineBold: 600 .7588rem "Inter";
+  --headlineItalic: italic 400 .7588rem "Inter";
   --toastify-color-success: #3FE864;
   --toastify-color-warning: #f1c40f;
   --toastify-color-error: #E83F5B;

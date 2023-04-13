@@ -18,7 +18,7 @@ export const StyledNavBar = styled.nav`
     button {
       font: var(--headlineBold);
       color: var(--gray-0);
-      padding: .5rem 1rem;
+      text-align: center;
       width: 3.4681rem;
       height: 2rem;
       background-color: var(--gray-3);

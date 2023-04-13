@@ -9,7 +9,7 @@ import { Fieldset } from "../Fieldset";
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
-import { UserContext } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const LoginContainer = () => {
 

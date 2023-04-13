@@ -2,12 +2,21 @@ import styled from "styled-components";
 
 export const StyledTechList = styled.ul`
     width: 100%;
+    height: 20rem;
     padding: 1rem 1.5rem;
     background: var(--gray-3);
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: ${(props) => props.children.type === "h1" ? "center ": "flex-start"};
     gap: 1rem;
+    overflow-y: auto;
+    h1 {
+        text-align: center;
+        color: var(--gray-0);
+        font: var(--title-1);
+    }
     li {
         height: 3.0625rem;
         width: 100%;

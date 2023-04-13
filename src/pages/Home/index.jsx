@@ -2,13 +2,15 @@ import { StyledHomePage } from "./style"
 import { NavBar } from "../../components/NavBar"
 import { Header } from "../../components/Header"
 import { Main } from "../../components/Main"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { api } from '../../services/api.js';
 import { TitleMain } from "../../components/TitleMain"
 import { TechList } from "../../components/TechList"
+import { Modal } from "../../components/Modal"
+import { UserContext } from "../../contexts/UserContext/UserContext"
 
 export const Home = () => {
-    const [user, setUser] = useState({})
+    const {user, setUser, modal} = useContext(UserContext)
 
     useEffect(() => {
         async function loadInfo() {
@@ -31,6 +33,7 @@ export const Home = () => {
                 <TitleMain />
                 <TechList />
             </Main>
+            {modal && <Modal />}
         </StyledHomePage>
     )
 }

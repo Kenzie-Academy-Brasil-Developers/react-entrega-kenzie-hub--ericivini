@@ -20,5 +20,8 @@ export const StyledTitleMain = styled.div`
     background-color: var(--gray-3);
     border-radius: 4px;
     font-size: 1.25rem;
+    :hover {
+      background-color: var(--gray-2);
+    }
   }
 `;

@@ -7,22 +7,9 @@ import { Home } from './pages/Home';
 import { RegisterPage } from './pages/RegisterPage';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './styles/globalStyles';
-import { UserProvider } from './contexts/UserContext';
+import { UserProvider } from './contexts/UserContext/UserContext';
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    async function loadUsers() {
-      try {
-        const response = await api.get("/users");
-        setUsers(response.data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    loadUsers()
-  }, []);
 
   return (
     <div className="App">
