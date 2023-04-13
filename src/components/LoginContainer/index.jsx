@@ -1,21 +1,19 @@
 import { Link, useNavigate } from "react-router-dom"
 import { StyledLoginContainer } from "./style"
-import { set, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
 import { formLoginSchema } from "./formLoginSchema";
 import { Input } from "../../fragments/Input";
 import { FormContainer } from "../FormContainer";
 import { Fieldset } from "../Fieldset";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
+import { UserContext } from "../../contexts/UserContext";
 
 export const LoginContainer = () => {
-    const [user, setUser] = useState({
-        email: "",
-    })
-    const [loading, setLoading] = useState(false);
 
+    const {user, setUser, loading, setLoading} = useContext(UserContext)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -30,7 +28,6 @@ export const LoginContainer = () => {
                 setTimeout(() => navigate("/Home"), 5000)
                 return response
             } catch (error) {
-                console.log(error)
                 toast.error("Ops, algo deu errado", { theme: "dark" });
                 return error.response
             }

@@ -7,6 +7,7 @@ import { Home } from './pages/Home';
 import { RegisterPage } from './pages/RegisterPage';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './styles/globalStyles';
+import { UserProvider } from './contexts/UserContext';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -26,12 +27,14 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Routes>
-        <Route path='/' element={<LoginPage />} />
-        <Route path='/Register' element={<RegisterPage />} />
-        <Route path='/Home' element={<Home />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+      <UserProvider>
+        <Routes>
+          <Route path='/' element={<LoginPage />} />
+          <Route path='/Register' element={<RegisterPage />} />
+          <Route path='/Home' element={<Home />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </UserProvider>
     </div>
   )
 }

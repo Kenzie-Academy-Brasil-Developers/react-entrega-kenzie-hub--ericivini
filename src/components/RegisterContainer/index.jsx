@@ -7,20 +7,20 @@ import { Input } from "../../fragments/Input";
 import { FormContainer } from "../FormContainer";
 import { StyledRegisterContainer } from "./style";
 import { Select } from "../../fragments/Select";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
+import { UserContext } from "../../contexts/UserContext";
 
 export const RegisterContainer = () => {
-    const [newUser, setNewUser] = useState({});
-    const [loading, setLoading] = useState(false);
+    const { newUser, setNewUser, loading, setLoading } = useContext(UserContext)
     const navigateTo = useNavigate();
 
     useEffect(() => {
         async function registerUser(formData) {
             try {
                 const response = await api.post("/users", formData)
-                .then(res => setNewUser(res.data));
+                    .then(res => setNewUser(res.data));
                 toast.success("Usuário criado com sucesso", {
                     theme: "dark"
                 });
