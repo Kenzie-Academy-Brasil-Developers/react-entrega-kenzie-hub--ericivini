@@ -13,7 +13,7 @@ import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const LoginContainer = () => {
 
-    const {user, setUser, loading, setLoading} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,10 +32,10 @@ export const LoginContainer = () => {
                 return error.response
             }
         }
-        if (loading) {
+        if (user) {
             loginUser(user);
         }
-    }, [loading])
+    }, [user])
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(formLoginSchema)
@@ -43,9 +43,7 @@ export const LoginContainer = () => {
 
     const submit = (formData) => {
         setUser(formData);
-        setLoading(!loading)
     }
-
     return (
         <StyledLoginContainer>
             <h2>Login</h2>

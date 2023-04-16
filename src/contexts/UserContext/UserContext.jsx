@@ -1,37 +1,51 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { TechContext, TechProvider } from "../TechContext";
+import { TechContext } from "../TechContext";
+import { Navigate } from "react-router-dom";
 
 
 export const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
     const { deleteTech, createTech } = useContext(TechContext)
-    const [user, setUser] = useState({
-        email: "",
-    });
-    const [newUser, setNewUser] = useState({});
+    const [user, setUser] = useState(null);
+    const [newUser, setNewUser] = useState(null);
     const [loading, setLoading] = useState(false);
     const [modalInfo, setModalInfo] = useState({})
     const [modal, setModal] = useState(false);
-    const token = localStorage.getItem("@TOKEN");
-    if (token) {
-        useEffect(() => {
-            async function loadInfo() {
-                try {
-                    const response = await api.get(`/profile`, {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    }).then(res => setUser(res.data));
-                    return response
-                } catch (error) {
-                    return error
+
+
+    useEffect(() => {
+        async function loadInfo() {
+            try {
+                const token = localStorage.getItem("@TOKEN");
+                if (!token) {
+                    return;
                 }
+                const response = await api.get("/profile", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                setUser(response.data);
+
+                return response
+
+            } catch (error) {
+                localStorage.clear()
+                return error
+            } finally {
+                setLoading(!loading);
             }
-            loadInfo();
-        }, [user])
+        }
+        loadInfo()
+    }, []);
+
+    if(!loading) {
+        return <div className="loading">Carregando...</div>
     }
+
 
     return (
         <UserContext.Provider value={{
@@ -48,9 +62,7 @@ export const UserProvider = ({ children }) => {
             createTech,
             deleteTech,
         }}>
-            <TechProvider>
-                {children}
-            </TechProvider>
+            {children}
         </UserContext.Provider>
     )
 }

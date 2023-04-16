@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import { api } from "../../services/api";
+import { toast } from "react-toastify";
 
 
 export const TechContext = createContext({});
@@ -14,11 +15,14 @@ export const TechProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data)
+            toast.success("Tecnologia adicionada a lista", {
+                theme: "dark"
+            })
             return response.data
 
         } catch (error) {
-            console.log(error)
+            toast.error(error.message);
+            return error
         }
     }
     const deleteTech = async (id) => {
@@ -28,11 +32,11 @@ export const TechProvider = ({children}) => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log(response.data)
             return response.data
 
         } catch (error) {
-            console.log(error)
+            toast.error(error)
+            return error
         }
     }
     

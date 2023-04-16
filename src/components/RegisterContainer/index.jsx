@@ -13,17 +13,17 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const RegisterContainer = () => {
-    const { newUser, setNewUser, loading, setLoading } = useContext(UserContext)
+    const { newUser, setNewUser } = useContext(UserContext)
     const navigateTo = useNavigate();
 
     useEffect(() => {
         async function registerUser(formData) {
             try {
                 const response = await api.post("/users", formData)
-                    .then(res => setNewUser(res.data));
                 toast.success("Usuário criado com sucesso", {
                     theme: "dark"
                 });
+                setNewUser(null)
                 setTimeout(() => navigateTo("/"), 5000)
                 return response
             } catch (error) {
@@ -33,10 +33,10 @@ export const RegisterContainer = () => {
                 return error.response
             }
         }
-        if (loading) {
+        if (newUser) {
             registerUser(newUser)
         }
-    }, [loading])
+    }, [newUser])
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(FormRegisterSchema)
@@ -44,7 +44,6 @@ export const RegisterContainer = () => {
 
     const submit = (formData) => {
         setNewUser(formData);
-        setLoading(!loading);
     }
 
     return (

@@ -8,23 +8,32 @@ import { TitleMain } from "../../components/TitleMain"
 import { TechList } from "../../components/TechList"
 import { Modal } from "../../components/Modal"
 import { UserContext } from "../../contexts/UserContext/UserContext"
+import { ToastContainer } from "react-toastify"
+import { Navigate } from "react-router-dom"
 
 export const Home = () => {
-    const {user, setUser, modal} = useContext(UserContext)
+    const { user, setUser, modal } = useContext(UserContext);
 
     useEffect(() => {
         async function loadInfo() {
             try {
                 const id = localStorage.getItem("@USERID")
                 const response = await api.get(`/users/${id}`)
-                    .then(res => setUser(res.data));
+                setUser(response.data);
                 return response
+
             } catch (error) {
                 return error
             }
         }
         loadInfo()
-    }, [])
+    }, []);
+
+
+    if (!user) {
+        return <Navigate to={"/"} />
+    }
+
     return (
         <StyledHomePage>
             <NavBar />
@@ -34,6 +43,7 @@ export const Home = () => {
                 <TechList />
             </Main>
             {modal && <Modal />}
+            <ToastContainer />
         </StyledHomePage>
     )
 }

@@ -52,4 +52,11 @@ a {
 a {
   color: inherit;
 }
+.loading {
+  position: relative;
+  top: 18.75rem;
+  color: #fff;
+  text-align: center;
+  font: var(--title-1);
+}
 `;
