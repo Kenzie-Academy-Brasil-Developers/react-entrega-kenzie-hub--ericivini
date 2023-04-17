@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [modalInfo, setModalInfo] = useState({})
     const [modal, setModal] = useState(false);
+    const [edit, setEdit] = useState(true)
 
 
     useEffect(() => {
@@ -42,7 +43,7 @@ export const UserProvider = ({ children }) => {
         loadInfo()
     }, []);
 
-    if(!loading) {
+    if (!loading) {
         return <div className="loading">Carregando...</div>
     }
 
@@ -61,6 +62,8 @@ export const UserProvider = ({ children }) => {
             setModalInfo,
             createTech,
             deleteTech,
+            edit,
+            setEdit
         }}>
             {children}
         </UserContext.Provider>

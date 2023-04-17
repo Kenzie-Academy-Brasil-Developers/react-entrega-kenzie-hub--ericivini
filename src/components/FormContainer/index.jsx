@@ -1,8 +1,11 @@
-export const FormContainer = ({ children, callback, button }) => {
+export const FormContainer = ({ children, callback, button, exclude, id}) => {
     return (
         <form onSubmit={callback} noValidate>
             {children}
-            <button type="submit">{button}</button>
+            <div>
+                <button className={exclude ? "submitButton" : "submit"} type="submit">{button}</button>
+                {exclude && <button onClick={() => exclude(id)} className="deleteButton">Excluir</button>}
+            </div>
         </form>
     )
 }

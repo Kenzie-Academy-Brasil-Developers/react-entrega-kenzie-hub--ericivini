@@ -4,7 +4,7 @@ export const StyledFieldset = styled.fieldset`
   position: relative;
   border: 0;
   width: 100%;
-  height: 35%;
+  height: 38%;
   display: flex;
   padding-bottom: 1rem;
   flex-direction: column;

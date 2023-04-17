@@ -25,9 +25,10 @@ export const StyledRegisterContainer = styled.div`
     gap: 1rem;
     width: 100%;
     font: var(--headline);
-    button {
+    > div > .submit {
       background-color: var(--color-primary);
       outline: none;
+      width: 100%;
       height: 3rem;
       font: 500 1rem "Inter";
       border: 1.2182px solid #ff577f;

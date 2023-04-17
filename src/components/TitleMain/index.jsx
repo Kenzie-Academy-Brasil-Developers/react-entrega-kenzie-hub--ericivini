@@ -3,13 +3,10 @@ import { StyledTitleMain } from "./style"
 import { UserContext } from "../../contexts/UserContext/UserContext"
 
 export const TitleMain = () => {
-    const {modal, setModal, modalInfo, setModalInfo} = useContext(UserContext)
+    const {modal, setModal} = useContext(UserContext)
 
     const addModal = () => {
         setModal(!modal);
-        setModalInfo({
-            text: "Cadastrar Tecnologia"
-        })
     }
     return (
         <StyledTitleMain>

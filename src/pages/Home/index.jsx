@@ -9,7 +9,7 @@ import { TechList } from "../../components/TechList"
 import { Modal } from "../../components/Modal"
 import { UserContext } from "../../contexts/UserContext/UserContext"
 import { ToastContainer } from "react-toastify"
-import { Navigate } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 
 export const Home = () => {
     const { user, setUser, modal } = useContext(UserContext);
@@ -38,6 +38,7 @@ export const Home = () => {
         <StyledHomePage>
             <NavBar />
             <Header state={user} />
+            <Outlet />
             <Main>
                 <TitleMain />
                 <TechList />

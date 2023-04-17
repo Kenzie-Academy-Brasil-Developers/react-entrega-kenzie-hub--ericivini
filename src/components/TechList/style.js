@@ -17,7 +17,7 @@ export const StyledTechList = styled.ul`
         color: var(--gray-0);
         font: var(--title-1);
     }
-    li {
+    a {
         height: 3.0625rem;
         width: 100%;
         background-color: var(--gray-4);

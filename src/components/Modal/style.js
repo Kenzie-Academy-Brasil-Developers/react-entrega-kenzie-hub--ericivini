@@ -22,39 +22,66 @@ export const StyledModal = styled.div`
       justify-content: space-between;
       padding: 1rem;
       background-color: var(--gray-2);
-      >h3 {
+      > h3 {
         font: var(--title-3);
         color: var(--gray-0);
       }
-      >button {
+      > button {
         text-align: center;
         font-weight: 700;
         border-radius: 4px;
-        padding: .25rem .5rem;
+        padding: 0.25rem 0.5rem;
         :hover {
-            background-color: var(--gray-1);
+          background-color: var(--gray-1);
         }
       }
     }
     form {
-        margin: 1rem;
-        height: 80%;
+      margin: 1rem;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      label {
+        font: var(--headline);
+        color: var(--gray-0);
+      }
+      > div {
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        label {
-            font: var(--headline);
-            color: var(--gray-0);
+        align-items: center;
+        justify-content: space-between;
+        height: 31%;
+        .submit {
+          font: 500 1rem "Inter";
+          background-color: var(--color-primary);
+          height: 80%;
+          width: 100%;
+          border-radius: 4px;
+          :hover {
+            background-color: var(--color-primary-focus);
+          }
         }
-        button {
-            font: 500 1rem "Inter";
-            background-color: var(--color-primary);
-            height: 18%;
-            border-radius: 4px;
-            :hover {
-                background-color: var(--color-primary-focus);
-            }
+        .submitButton {
+          font: 500 1rem "Inter";
+          background-color: var(--color-primary);
+          width: 70%;
+          height: 80%;
+          border-radius: 4px;
+          :hover {
+            background-color: var(--color-primary-focus);
+          }
         }
+        .deleteButton {
+          font: 500 1rem "Inter";
+          background-color: var(--gray-1);
+          width: 25%;
+          height: 80%;
+          border-radius: 4px;
+          :hover {
+            background-color: var(--gray-2);
+          }
+        }
+      }
     }
   }
 `;
