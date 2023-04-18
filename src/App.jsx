@@ -3,7 +3,7 @@ import { GlobalStyle } from './styles/globalStyles';
 import { UserProvider } from './contexts/UserContext/UserContext';
 import { MainRoutes } from './routes/MainRoutes';
 
-function App() {
+const App = () => {
 
   return (
     <div className="App">

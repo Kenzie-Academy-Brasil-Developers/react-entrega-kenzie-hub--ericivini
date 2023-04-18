@@ -9,7 +9,7 @@ export const TechContext = createContext({});
 
 export const TechProvider = ({ children }) => {
     const token = localStorage.getItem("@TOKEN")
-    const { user, setUser } = useContext(UserContext)
+    const { techs, setTechs } = useContext(UserContext);
     const { id } = useParams()
 
     const createTech = async (data) => {
@@ -22,8 +22,8 @@ export const TechProvider = ({ children }) => {
             toast.success("Tecnologia adicionada a lista", {
                 theme: "dark"
             });
-            const newList = [...user.techs, response.data];
-            setUser({ ...user, techs: newList })
+            const newList = [...techs, response.data];
+            setTechs(newList)
             return response.data
 
         } catch (error) {
@@ -50,23 +50,28 @@ export const TechProvider = ({ children }) => {
         }
     }
 
-    const changeUser = async (data) => {
+    const changeTech = async (data) => {
         try {
             const response = await api.put(`/users/techs/${id}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            })
+            });
+
+            toast.success("Alterações salvas", {
+                theme: "dark"
+            });
 
             return response.data
         } catch (error) {
-            toast.error(error.message)
+
+            toast.error(error)
             return error
         }
     }
 
     return (
-        <TechContext.Provider value={{ createTech, deleteTech, changeUser }}>
+        <TechContext.Provider value={{ createTech, deleteTech, changeTech }}>
             {children}
         </TechContext.Provider>
     )

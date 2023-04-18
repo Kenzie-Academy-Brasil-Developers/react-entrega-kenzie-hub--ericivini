@@ -1,38 +1,18 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormRegisterSchema } from "./FormRegisterSchema";
-import { useNavigate } from "react-router-dom";
 import { Fieldset } from "../Fieldset";
 import { Input } from "../../fragments/Input";
 import { FormContainer } from "../FormContainer";
 import { StyledRegisterContainer } from "./style";
 import { Select } from "../../fragments/Select";
 import { useContext, useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { toast } from "react-toastify";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const RegisterContainer = () => {
-    const { newUser, setNewUser } = useContext(UserContext)
-    const navigateTo = useNavigate();
+    const { newUser, setNewUser, registerUser} = useContext(UserContext);
 
     useEffect(() => {
-        async function registerUser(formData) {
-            try {
-                const response = await api.post("/users", formData)
-                toast.success("Usuário criado com sucesso", {
-                    theme: "dark"
-                });
-                setNewUser(null)
-                setTimeout(() => navigateTo("/"), 5000)
-                return response
-            } catch (error) {
-                toast.error(error.response.data.message, {
-                    theme: "dark"
-                });
-                return error.response
-            }
-        }
         if (newUser) {
             registerUser(newUser)
         }

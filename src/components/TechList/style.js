@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledTechList = styled.ul`
     width: 100%;
-    height: 20rem;
+    height: 23rem;
     padding: 1rem 1.5rem;
     background: var(--gray-3);
     border-radius: 4px;

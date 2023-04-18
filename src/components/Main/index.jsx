@@ -1,7 +1,6 @@
-import { Modal } from "../Modal"
 import { StyledMain } from "./style"
 
-export const Main = ({ children, modalState }) => {
+export const Main = ({ children }) => {
 
     return (
         <StyledMain>

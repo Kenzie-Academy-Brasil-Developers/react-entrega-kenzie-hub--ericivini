@@ -13,25 +13,9 @@ import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const LoginContainer = () => {
 
-    const {user, setUser} = useContext(UserContext)
-    const navigate = useNavigate();
+    const {user, setUser, loginUser} = useContext(UserContext);
 
     useEffect(() => {
-        async function loginUser(data) {
-            try {
-                const response = await api.post("/sessions/", data)
-                    .then(res => {
-                        localStorage.setItem("@TOKEN", res.data.token);
-                        localStorage.setItem("@USERID", res.data.user.id);
-                    });
-                toast.success("Logado", { theme: "dark" });
-                setTimeout(() => navigate("/Home"), 5000)
-                return response
-            } catch (error) {
-                toast.error("Ops, algo deu errado", { theme: "dark" });
-                return error.response
-            }
-        }
         if (user) {
             loginUser(user);
         }

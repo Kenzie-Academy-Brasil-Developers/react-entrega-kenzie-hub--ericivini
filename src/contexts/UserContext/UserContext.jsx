@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { TechContext } from "../TechContext";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 export const UserContext = createContext({})
@@ -11,10 +12,49 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [newUser, setNewUser] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [modalInfo, setModalInfo] = useState({})
+    const [techs, setTechs] = useState([])
     const [modal, setModal] = useState(false);
-    const [edit, setEdit] = useState(true)
+    const [edit, setEdit] = useState(true);
+    const navigate = useNavigate();
 
+    const logout = () => {
+        localStorage.clear();
+        setUser(null)
+        navigate("/")
+    }
+
+    const loginUser = async (data) => {
+        try {
+            const response = await api.post("/sessions/", data)
+                .then(res => {
+                    localStorage.setItem("@TOKEN", res.data.token);
+                    localStorage.setItem("@USERID", res.data.user.id);
+                });
+            toast.success("Logado", { theme: "dark" });
+            setTimeout(() => navigate("/Home"), 5000)
+            return response
+        } catch (error) {
+            toast.error("Ops, algo deu errado", { theme: "dark" });
+            return error.response
+        }
+    }
+
+    const registerUser = async (formData) => {
+        try {
+            const response = await api.post("/users", formData)
+            toast.success("Usuário criado com sucesso", {
+                theme: "dark"
+            });
+            setNewUser(null)
+            setTimeout(() => navigate("/"), 5000)
+            return response
+        } catch (error) {
+            toast.error(error.response.data.message, {
+                theme: "dark"
+            });
+            return error.response
+        }
+    }
 
     useEffect(() => {
         async function loadInfo() {
@@ -30,6 +70,7 @@ export const UserProvider = ({ children }) => {
                 });
 
                 setUser(response.data);
+                setTechs(response.data.techs);
 
                 return response
 
@@ -58,12 +99,15 @@ export const UserProvider = ({ children }) => {
             setLoading,
             modal,
             setModal,
-            modalInfo,
-            setModalInfo,
             createTech,
             deleteTech,
             edit,
-            setEdit
+            techs,
+            setTechs,
+            setEdit,
+            logout,
+            loginUser,
+            registerUser
         }}>
             {children}
         </UserContext.Provider>

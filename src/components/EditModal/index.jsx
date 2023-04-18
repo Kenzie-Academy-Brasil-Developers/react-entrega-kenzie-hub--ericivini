@@ -14,19 +14,17 @@ export const EditModal = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { id } = useParams();
-    const { user, setUser } = useContext(UserContext);
-    const { deleteTech, changeUser } = useContext(TechContext)
-    const tech = user.techs.find(element => element.id === id);
+    const { techs } = useContext(UserContext);
+    const { deleteTech, changeTech } = useContext(TechContext)
+    const tech = techs.find(element => element.id === id);
 
     const submit = (formData) => {
-        changeUser(formData)
+        changeTech(formData)
         navigate("/Home")
     }
 
     const exclude = () => {
         deleteTech();
-        const newTech = user.techs.filter(element => element.id !== id);
-        setUser({ ...user, techs: newTech })
         navigate("/Home")
     }
 
