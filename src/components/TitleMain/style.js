@@ -23,5 +23,9 @@ export const StyledTitleMain = styled.div`
     :hover {
       background-color: var(--gray-2);
     }
+    :disabled {
+      background-color: var(--gray-4);
+      cursor: default;
+    }
   }
 `;

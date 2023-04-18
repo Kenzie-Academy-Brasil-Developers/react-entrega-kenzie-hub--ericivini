@@ -16,6 +16,7 @@ export const UserProvider = ({ children }) => {
     const [modal, setModal] = useState(false);
     const [edit, setEdit] = useState(true);
     const navigate = useNavigate();
+    const token = localStorage.getItem("@TOKEN");
 
     const logout = () => {
         localStorage.clear();
@@ -56,10 +57,23 @@ export const UserProvider = ({ children }) => {
         }
     }
 
+    const loadTechs = async () => {
+        try {
+            const response = await api.get("/profile", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setTechs(response.data.techs)
+            return;
+        } catch (error) {
+            return error
+        }
+    }
+
     useEffect(() => {
         async function loadInfo() {
             try {
-                const token = localStorage.getItem("@TOKEN");
                 if (!token) {
                     return;
                 }
@@ -107,7 +121,8 @@ export const UserProvider = ({ children }) => {
             setEdit,
             logout,
             loginUser,
-            registerUser
+            registerUser,
+            loadTechs
         }}>
             {children}
         </UserContext.Provider>
