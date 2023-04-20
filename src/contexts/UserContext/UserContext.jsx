@@ -122,7 +122,8 @@ export const UserProvider = ({ children }) => {
             logout,
             loginUser,
             registerUser,
-            loadTechs
+            loadTechs,
+            navigate
         }}>
             {children}
         </UserContext.Provider>

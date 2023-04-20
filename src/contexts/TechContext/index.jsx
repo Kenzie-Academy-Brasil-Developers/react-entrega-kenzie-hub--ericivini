@@ -24,11 +24,6 @@ export const TechProvider = ({ children }) => {
             });
             const newList = [...techs, response.data];
             setTechs(newList)
-            if(newList.length >= 5) {
-                toast.warn("Maximo de tecnologias atingido", {
-                    theme: "dark"
-                })
-            }
             return response.data
 
         } catch (error) {

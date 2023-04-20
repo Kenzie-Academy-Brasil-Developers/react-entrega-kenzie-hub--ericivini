@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom"
 
-export const ListItem = ({ name, status, id, index }) => {
+export const ListItem = ({ name, status, id }) => {
 
     return (
         <>
-            {index > 5 ?
-                null
-                :
-                (<Link to={`${id}`}>
-                    <h3>{name}</h3>
-                    <span>{status}</span>
-                </Link>)
-            }
+            <Link to={`${id}`}>
+                <h3>{name}</h3>
+                <span>{status}</span>
+            </Link>
         </>
     )
 }

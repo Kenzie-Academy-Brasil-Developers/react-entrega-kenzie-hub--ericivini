@@ -16,7 +16,7 @@ export const TechList = () => {
     return (
         <StyledTechList>
             {techs.length !== 0 ?
-                techs.map((element, index) => <ListItem key={element.id} index={index} id={element.id} name={element.title} status={element.status} />)
+                techs.map((element, index) => <ListItem key={element.id} id={element.id} name={element.title} status={element.status} />)
                 :
                 <h1>Você náo possui tecnologias registradas</h1>
             }

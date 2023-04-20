@@ -11,7 +11,7 @@ export const TitleMain = () => {
     return (
         <StyledTitleMain>
             <h2>Tecnologias</h2>
-            <button disabled={techs.length > 5 && true} onClick={addModal}>+</button>
+            <button onClick={addModal}>+</button>
         </StyledTitleMain>
     )
 }

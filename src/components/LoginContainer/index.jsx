@@ -13,11 +13,12 @@ import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const LoginContainer = () => {
 
-    const {user, setUser, loginUser} = useContext(UserContext);
+    const { user, setUser, loginUser } = useContext(UserContext);
+    const {navigate} = useContext(UserContext)
 
     useEffect(() => {
         if (user) {
-            loginUser(user);
+            navigate("/Home")
         }
     }, [user])
 

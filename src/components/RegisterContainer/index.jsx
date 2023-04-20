@@ -10,9 +10,12 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext/UserContext";
 
 export const RegisterContainer = () => {
-    const { newUser, setNewUser, registerUser} = useContext(UserContext);
+    const { newUser, setNewUser, user, registerUser, navigate } = useContext(UserContext);
 
     useEffect(() => {
+        if (user) {
+            navigate("/Home")
+        }
         if (newUser) {
             registerUser(newUser)
         }
